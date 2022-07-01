@@ -1,0 +1,16 @@
+button {
+  list-style-type: none;
+  margin: 0px;
+  background: none;
+  border: 0;
+}
+
+p {
+  float: right;
+  color: white;
+}
+
+img {
+  float: left;
+  color: white;
+}
