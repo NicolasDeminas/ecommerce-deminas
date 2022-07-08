@@ -1,0 +1,15 @@
+.itemListContainer {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.itemCount {
+  width: 600px;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.itemForm {
+  display: flex;
+  align-content: space-around;
+}
