@@ -1,0 +1,17 @@
+.item {
+  /* background-color: aquamarine; */
+  background-image: url(https://img.freepik.com/foto-gratis/fondo-pantalla-onda-degradado-abstracto-azul_53876-108364.jpg?w=360);
+  border-style: solid;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  width: 300px;
+  margin: 10px;
+}
+
+.item_p {
+  color: black;
+  float: left;
+  align-self: center;
+}

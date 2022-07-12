@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ItemListContainer.css";
-import ItemCount from "../ItemCount/ItemCount";
+import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = ({ greeting }) => {
-  let [stock, setStock] = useState(10);
-
   return (
     <div>
       <h1>{greeting}</h1>
-      <div className='itemListContainer'>
-        <ItemCount stock={stock} initial={1} />
-      </div>
+      <ItemList />
     </div>
   );
 };

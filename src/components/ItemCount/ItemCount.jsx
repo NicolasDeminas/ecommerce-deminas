@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./ItemCount.css";
 
 const ItemCount = ({ stock, initial }) => {
   let [item, setItem] = useState(initial || 0);
@@ -27,11 +28,13 @@ const ItemCount = ({ stock, initial }) => {
   return (
     <>
       <div className='itemCount'>
-        <form onSubmit={handleSubmit} className='itemForm'>
+        <form onSubmit={handleSubmit} className='itemCount'>
           <button onClick={handleRest}>-</button>
           <input type='number' value={item} />
           <button onClick={handleSum}>+</button>
-          <input type='submit' />
+          <div className='itemCount-submit'>
+            <input type='submit' value='Agregar' />
+          </div>
         </form>
       </div>
     </>
