@@ -7,10 +7,18 @@ const ItemListContainer = ({ greeting }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setData(arr);
-    }, 3000);
-  });
+    const traerProductos = new Promise((res, rej) => {
+      setTimeout(() => {
+        res(arr);
+      }, 2000);
+    })
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
