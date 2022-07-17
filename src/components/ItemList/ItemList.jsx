@@ -1,6 +1,7 @@
 import React from "react";
 import "./ItemList.css";
 import Item from "../Item/Item";
+import { Link } from "react-router-dom";
 
 const ItemList = ({ data }) => {
   const arr = data;
@@ -10,13 +11,14 @@ const ItemList = ({ data }) => {
       {arr.map((item) => {
         return (
           <div key={item.id}>
-            <Item
-              title={item.title}
-              pictureUrl={item.pictureUrl}
-              description={item.description}
-              price={item.price}
-              stock={item.stock}
-            />
+            <Link to={`/item/${item.id}`} style={{ textDecoration: "none" }}>
+              <Item
+                title={item.title}
+                pictureUrl={item.image}
+                price={item.price}
+                stock={item.stock}
+              />
+            </Link>
           </div>
         );
       })}

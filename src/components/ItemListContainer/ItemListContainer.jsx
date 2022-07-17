@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from "react";
+import clienteAxios from "../../config/axiosConfig";
 import "./ItemListContainer.css";
 import ItemList from "../ItemList/ItemList";
-import arr from "../../mockData";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({ greeting }) => {
   const [data, setData] = useState([]);
+  const { category } = useParams();
+
+  const consultaApi = async () => {
+    if (!category) {
+      const products = await clienteAxios.get(`/products`);
+      return setData(products.data);
+    }
+    const products = await clienteAxios.get(`/products/category/${category}`);
+    return setData(products.data);
+  };
 
   useEffect(() => {
-    const traerProductos = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(arr);
-      }, 2000);
-    })
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    consultaApi();
+  }, [category]);
 
   return (
     <div>
       <h1>{greeting}</h1>
-      <ItemList data={data} />
+      {<ItemList data={data} />}
     </div>
   );
 };

@@ -6,16 +6,13 @@ ul {
   background-color: #444;
 }
 
-h7 {
-  float: left;
-  margin-right: 500px;
-}
-
 li {
   float: left;
 }
 
-li h7 {
+li h5 {
+  float: left;
+  margin-right: 500px;
   display: block;
   color: white;
   text-align: center;

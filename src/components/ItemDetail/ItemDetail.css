@@ -1,0 +1,9 @@
+.itemDetail {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemDetailImage {
+  width: 300px;
+  height: 500px;
+}
