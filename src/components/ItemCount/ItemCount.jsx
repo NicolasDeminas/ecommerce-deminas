@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, setItemCount }) => {
   let [item, setItem] = useState(initial || 0);
 
-  const handleSubmit = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
     if (item > stock) {
       return alert(`No hay stock suficiente`);
     }
-    return console.log(item);
+    setItemCount(item);
+    // return console.log(item);
   };
 
-  const handleSum = () => {
+  const handleSum = (e) => {
+    e.preventDefault();
     if (item < stock) {
       return setItem(item + 1);
     }
     return alert(`No hay stock suficiente`);
   };
 
-  const handleRest = () => {
+  const handleRest = (e) => {
+    e.preventDefault();
     if (item > 0) {
       return setItem(item - 1);
     }
@@ -28,12 +31,12 @@ const ItemCount = ({ stock, initial }) => {
   return (
     <>
       <div className='itemCount'>
-        <form onSubmit={handleSubmit} className='itemCount'>
+        <form className='itemCount'>
           <button onClick={handleRest}>-</button>
           <input type='number' value={item} />
           <button onClick={handleSum}>+</button>
           <div className='itemCount-submit'>
-            <input type='submit' value='Agregar' />
+            <input type='submit' value='Agregar' onClick={handleClick} />
           </div>
         </form>
       </div>
