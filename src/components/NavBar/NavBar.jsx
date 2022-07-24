@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../../context/cartContext";
 import clienteAxios from "../../config/axiosConfig";
 
 function NavBar() {
   const [categories, setCategories] = useState([]);
+  const { cart } = useContext(CartContext);
 
   const getCategories = async () => {
     const categories = await clienteAxios.get(`/products/categories`);
@@ -36,7 +38,7 @@ function NavBar() {
         })}
         <li className='login'>
           <NavLink to='/'>
-            <CartWidget item='1' />
+            <CartWidget item={cart.length} />
           </NavLink>
         </li>
       </ul>

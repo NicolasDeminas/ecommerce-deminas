@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
 
-const ItemCount = ({ stock, initial, setItemCount }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
   let [item, setItem] = useState(initial || 0);
 
   const handleClick = (e) => {
@@ -9,7 +9,7 @@ const ItemCount = ({ stock, initial, setItemCount }) => {
     if (item > stock) {
       return alert(`No hay stock suficiente`);
     }
-    setItemCount(item);
+    onAdd(item);
     // return console.log(item);
   };
 
