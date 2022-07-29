@@ -3,9 +3,11 @@ import clienteAxios from "../../config/axiosConfig";
 import "./ItemListContainer.css";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 const ItemListContainer = ({ greeting }) => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { category } = useParams();
 
   const consultaApi = async () => {
@@ -19,12 +21,14 @@ const ItemListContainer = ({ greeting }) => {
 
   useEffect(() => {
     consultaApi();
+    setLoading(false);
   }, [category]);
 
   return (
     <div>
       <h1>{greeting}</h1>
-      {<ItemList data={data} />}
+
+      {loading ? <Loader /> : <ItemList data={data} />}
     </div>
   );
 };

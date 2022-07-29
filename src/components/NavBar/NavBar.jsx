@@ -7,7 +7,7 @@ import clienteAxios from "../../config/axiosConfig";
 
 function NavBar() {
   const [categories, setCategories] = useState([]);
-  const { cart } = useContext(CartContext);
+  const { cart, item } = useContext(CartContext);
 
   const getCategories = async () => {
     const categories = await clienteAxios.get(`/products/categories`);
@@ -37,8 +37,8 @@ function NavBar() {
           );
         })}
         <li className='login'>
-          <NavLink to='/'>
-            <CartWidget item={cart.length} />
+          <NavLink to='/cart'>
+            <CartWidget item={item} />
           </NavLink>
         </li>
       </ul>

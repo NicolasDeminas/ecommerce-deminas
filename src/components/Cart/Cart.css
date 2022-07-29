@@ -1,0 +1,8 @@
+.products {
+  margin: 10px;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: space-between;
+  border: solid;
+  border-radius: 4px;
+}
