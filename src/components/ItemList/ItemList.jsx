@@ -14,7 +14,7 @@ const ItemList = ({ data }) => {
             <Link to={`/item/${item.id}`} style={{ textDecoration: "none" }}>
               <Item
                 title={item.title}
-                pictureUrl={item.image}
+                pictureUrl={item.imageId}
                 price={item.price}
                 stock={item.stock}
               />

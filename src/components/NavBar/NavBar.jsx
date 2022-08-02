@@ -4,14 +4,27 @@ import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../context/cartContext";
 import clienteAxios from "../../config/axiosConfig";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 function NavBar() {
   const [categories, setCategories] = useState([]);
   const { cart, item } = useContext(CartContext);
 
+  // const getCategories = async () => {
+  //   const categories = await clienteAxios.get(`/products/categories`);
+  //   setCategories(categories.data);
+  // };
+
   const getCategories = async () => {
-    const categories = await clienteAxios.get(`/products/categories`);
-    setCategories(categories.data);
+    const db = getFirestore();
+    const categoriesCollection = collection(db, "categories");
+    const categories = await getDocs(categoriesCollection);
+    const arr = [];
+    const dataExtraida = categories.docs.map((datos) => {
+      return arr.push(datos.data().category);
+    });
+
+    setCategories(arr);
   };
 
   useEffect(() => {

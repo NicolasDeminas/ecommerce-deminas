@@ -10,7 +10,6 @@ const CartProvider = (props) => {
   useEffect(() => {
     countItems();
     calculateTotal();
-    console.log(cart);
   }, [cart, item]);
 
   const addToCart = (item, cantidad) => {

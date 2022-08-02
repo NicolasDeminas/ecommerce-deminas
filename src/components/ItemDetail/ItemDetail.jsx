@@ -16,7 +16,7 @@ const ItemDetail = ({ data }) => {
   return (
     <div className='itemDetail'>
       <h4>{data.title}</h4>
-      <img src={data.image} alt={data.title} className='itemDetailImage' />
+      <img src={data.imageId} alt={data.title} className='itemDetailImage' />
       <p>{data.description}</p>
       {itemCount ? (
         <button>
