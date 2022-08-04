@@ -10,7 +10,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       return alert(`No hay stock suficiente`);
     }
     onAdd(item);
-    // return console.log(item);
   };
 
   const handleSum = (e) => {

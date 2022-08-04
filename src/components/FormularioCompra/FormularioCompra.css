@@ -1,0 +1,9 @@
+.formulario-compra {
+  border: solid;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
