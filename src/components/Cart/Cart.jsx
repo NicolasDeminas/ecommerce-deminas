@@ -4,7 +4,7 @@ import { CartContext } from "../../context/cartContext";
 import FormularioCompra from "../FormularioCompra/FormularioCompra";
 
 const Cart = () => {
-  const { cart, removeItem, total } = useContext(CartContext);
+  const { cart, removeItem, total, clear } = useContext(CartContext);
 
   if (cart.length === 0) {
     return <h4>No hay items en el carrito</h4>;
@@ -33,7 +33,7 @@ const Cart = () => {
       })}
       <h3>Total compra: ${total}-</h3>
       <div className='buy-form'>
-        <FormularioCompra cart={cart} total={total} />
+        <FormularioCompra cart={cart} total={total} clear={clear} />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./FormularioCompra.css";
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 
-const FormularioCompra = ({ cart, total }) => {
+const FormularioCompra = ({ cart, total, clear }) => {
   const [formulario, setFormulario] = useState({
     name: "",
     phone: "",
@@ -16,6 +16,7 @@ const FormularioCompra = ({ cart, total }) => {
     const ordersCollection = collection(db, "orders");
 
     const doc = await addDoc(ordersCollection, order);
+    clear();
     return alert(`Su compra fue realizada con exito!! id de compra: ${doc.id}`);
   };
 
@@ -36,11 +37,11 @@ const FormularioCompra = ({ cart, total }) => {
       <h5>Formulario compra</h5>
       <form onSubmit={handleSubmit} className='formulario-compra'>
         <label htmlFor='name'>Nombre</label>
-        <input type='text' name='name' onChange={handleChange} />
+        <input type='text' name='name' onChange={handleChange} required />
         <label>Telefono</label>
-        <input type='text' name='phone' onChange={handleChange} />
+        <input type='text' name='phone' onChange={handleChange} required />
         <label>Mail</label>
-        <input type='text' name='mail' onChange={handleChange} />
+        <input type='text' name='mail' onChange={handleChange} required />
         <input type='submit' />
       </form>
     </div>
