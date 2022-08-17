@@ -17,21 +17,15 @@ const ItemListContainer = ({ greeting }) => {
   const { category } = useParams();
 
   const consultaApi = async () => {
-    if (!category) {
-      const db = getFirestore();
-      const itemCollection = collection(db, "items");
-      const products = await getDocs(itemCollection);
-      const arr = [];
-      products.docs.map((datos) => {
-        return arr.push({ id: datos.id, ...datos.data() });
-      });
-      return setData(arr);
-    }
     const db = getFirestore();
-    const itemCollection = query(
-      collection(db, "items"),
-      where("categoryId", "==", category)
-    );
+    let itemCollection;
+    category
+      ? (itemCollection = query(
+          collection(db, "items"),
+          where("categoryId", "==", category)
+        ))
+      : (itemCollection = collection(db, "items"));
+
     const products = await getDocs(itemCollection);
     const arr = [];
     products.docs.map((datos) => {
